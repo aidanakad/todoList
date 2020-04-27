@@ -1,0 +1,15 @@
+.done{
+    text-decoration: line-through;
+}
+
+.desc{
+    padding: 10px;
+}
+
+.desc--hide{
+    display: none;
+}
+
+button{
+    margin: 5px;
+}

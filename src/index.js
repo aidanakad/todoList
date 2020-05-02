@@ -1,2 +1,6 @@
-import {fetchGetList, fetchAddTask, fetchEditTask, fetchDeleteTask} from './api'
-import {createEl, CreateRenderTas} from './creation'
+import api from './api'
+
+
+
+api.fetchGetList()
+console.log('api', api)

@@ -1,15 +1,15 @@
 const endpoint = 'http://localhost:3000'
 
 
-// export const fetchGetList = ()=>{
-//     return fetch(`${endpoint}/list`)
-//     .then(response =>{
-//         if (response.ok) return response.json()
-//         throw new Error('Не удалось загрузить список задач')
-//     })
-// }
+export const fetchGetList = ()=>{
+    return fetch(`${endpoint}/list`)
+    .then(response =>{
+        if (response.ok) return response.json()
+        throw new Error('Не удалось загрузить список задач')
+    })
+}
 
- const fetchAddTask = (body) => {
+export const fetchAddTask = (body) => {
     return fetch(`${endpoint}/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -21,7 +21,7 @@ const endpoint = 'http://localhost:3000'
     })
   }
 
-const fetchEditTask = (body, id)=>{
+export const fetchEditTask = (body, id)=>{
     return fetch(`${endpoint}/edit/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -32,7 +32,8 @@ const fetchEditTask = (body, id)=>{
           throw new Error('Не удалось внести редактирование')
       })
   }
- const fetchDeleteTask = (id)=>{
+
+export  const fetchDeleteTask = (id)=>{
     return fetch(`${endpoint}/delete/${id}`, {
         method: 'DELETE',
       })
@@ -40,14 +41,4 @@ const fetchEditTask = (body, id)=>{
           if( response.ok) return response.json()
           throw new Error('Не удалось удалить задачу')
       })
-  }
-
-  export default{
-   fetchGetList: ()=>{
-        return fetch(`${endpoint}/list`)
-        .then(response =>{
-            if (response.ok) return response.json()
-            throw new Error('Не удалось загрузить список задач')
-        })
-    }
   }

@@ -3,10 +3,10 @@ import {createEl} from './tools'
 
 
 
- const renderTask = (task) =>{
+ const renderTask = (task, list) =>{
     const list = document.querySelector('#list')
     const li = createEl('li')
-    const div = createEl('div')
+    const text = createEl('div', task.text)
     const btnWrepper = createEl('div')
     const doneBtnTxt = !task.done ? 'Сделано' : 'Не сделано'
     const doneBtn = createEl('button', doneBtnTxt)
@@ -29,7 +29,7 @@ import {createEl} from './tools'
     doneBtn.addEventListener('click',() => {
         fetchEditTask(task.id, {text: !task.done})
     })
-    if(task.done) li.className = '.done'
+    if(task.done) li.className = 'done'
 
     editBtn.addEventListener('click', () =>{
         const editInput = createEl('input')
@@ -38,10 +38,8 @@ import {createEl} from './tools'
         li.insertBefore(editInput, task.text)
         li.removeChild(text)
         input.addEventListener('blur', ()=>{
-            fetchEditTask(task.id, {text: input.value})
+            fetchEditTask(task.id, {text: editInput.value})
             .then(()=>{
-                // const list = document.querySelector('#list')
-                // list.remove()
                 renderTaskList()
             })
         })
@@ -49,17 +47,18 @@ import {createEl} from './tools'
 }
 
 const renderTaskList = ()=>{
+    const list = document.querySelector('#list')
     fetchGetList()
     .then(taskList => taskList.forEach((item) => renderTask(item, list)))
 }
  renderTaskList()
 
-const noteArea = document.querySelector('input[name="note-txt"]')
-const textarea = document.querySelector('textarea[name="description-txt"]')
+const noteArea = document.querySelector('input[name="note"]')
+const textarea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
 
 createBtn.addEventListener('click', ()=>{
-  fetchAddTask ({text: input.value, textarea: input.value})
+  fetchAddTask ({text: noteArea.value, textarea: noteArea.value})
   .then(()=>{
       const list = document.querySelector('#list')
       list.remove()

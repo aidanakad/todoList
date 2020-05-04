@@ -21,7 +21,7 @@ export const fetchAddTask = (body) => {
     })
   }
 
-export const fetchEditTask = (body, id)=>{
+export const fetchEditTask = (id, body)=>{
     return fetch(`${endpoint}/edit/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

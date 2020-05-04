@@ -2,9 +2,10 @@ import {fetchGetList, fetchAddTask, fetchEditTask, fetchDeleteTask} from './api'
 import {createEl} from './tools'
 
 
+const list = document.querySelector('#list')
 
- const renderTask = (task, list) =>{
-    const list = document.querySelector('#list')
+ const renderTask = (task) =>{
+    
     const li = createEl('li')
     const text = createEl('div', task.text)
     const btnWrepper = createEl('div')
@@ -13,33 +14,42 @@ import {createEl} from './tools'
     const editBtn = createEl('button', 'Редактировать')
     const deleteBtn = createEl('button', 'Удалить')
     list.appendChild(li)
-    li.appendChild(div)
+    li.appendChild(text)
     li.appendChild(btnWrepper)
-    btnWrepper.appendChild(editBtn)
     btnWrepper.appendChild(doneBtn)
+    btnWrepper.appendChild(editBtn)
     btnWrepper.appendChild(deleteBtn)
 
     deleteBtn.addEventListener('click', ()=>{
         fetchDeleteTask(task.id)
         .then(()=>{
+            list
+            list.remove()
             renderTaskList()
         })
     })
 
     doneBtn.addEventListener('click',() => {
-        fetchEditTask(task.id, {text: !task.done})
+        fetchEditTask(task.id, {done: !task.done})
+        .then(()=>{
+            const list = document.querySelector('#list')
+            list.remove()
+            renderTaskList()
+        })
     })
-    if(task.done) li.className = 'done'
+    if(task.done) li.classList.add('done')
 
     editBtn.addEventListener('click', () =>{
-        const editInput = createEl('input')
+        const editInput = createEl('input', {class: 'edit-input'})
         editInput.type = 'text'
         editInput.value = task.text
-        li.insertBefore(editInput, task.text)
+        li.insertBefore(editInput, text)
         li.removeChild(text)
-        input.addEventListener('blur', ()=>{
+        editInput.addEventListener('blur', ()=>{
             fetchEditTask(task.id, {text: editInput.value})
             .then(()=>{
+                const list = document.querySelector('#list')
+                list.remove()
                 renderTaskList()
             })
         })
@@ -49,7 +59,7 @@ import {createEl} from './tools'
 const renderTaskList = ()=>{
     const list = document.querySelector('#list')
     fetchGetList()
-    .then(taskList => taskList.forEach((item) => renderTask(item, list)))
+    .then(taskList => taskList.forEach((item) => renderTask(item)))
 }
  renderTaskList()
 

@@ -1,4 +1,36 @@
+:root{
+    --blue: #E5E5E5;
+    --white: #ffffff;
+    --beige: #FFFBE3;
+    --green: #57AD56;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    background: var(--blue);
+    color: var(--white);
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.header h1{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 61px;
+}
+
 .done{
     text-decoration: line-through;
+}
+
+.edit-input{
+    width: 100%;
+    display: block;
 }
 

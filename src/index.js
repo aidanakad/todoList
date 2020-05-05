@@ -8,10 +8,7 @@ import {
     createEl
 } from './tools'
 
-
-const list = document.querySelector('#list')
-
-const renderTask = (task) => {
+const renderTask = (task, list) => {
 
     const li = createEl('li')
     const text = createEl('div', task.text)
@@ -30,7 +27,7 @@ const renderTask = (task) => {
     deleteBtn.addEventListener('click', () => {
         fetchDeleteTask(task.id)
             .then(() => {
-                li.remove()
+                list.remove()
                 renderTaskList()
             })
     })
@@ -40,7 +37,7 @@ const renderTask = (task) => {
                 done: !task.done
             })
             .then(() => {
-                li.remove()
+                list.remove()
                 renderTaskList()
             })
     })
@@ -59,7 +56,7 @@ const renderTask = (task) => {
                     text: editInput.value
                 })
                 .then(() => {
-                    li.remove()
+                    list.remove()
                     renderTaskList()
                 })
         })
@@ -67,9 +64,10 @@ const renderTask = (task) => {
 }
 
 const renderTaskList = () => {
-    const list = document.querySelector('#list')
+    const list = createEl('ul', null, {id: 'list'})
+    document.body.appendChild(list)
     fetchGetList()
-        .then(taskList => taskList.forEach((item) => renderTask(item)))
+        .then(taskList => taskList.forEach((item) => renderTask(item, list)))
 }
 renderTaskList()
 

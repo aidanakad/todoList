@@ -4,27 +4,26 @@ import {createEl} from './tools'
 
 const list = document.querySelector('#list')
 
- const renderTask = (task) =>{
-    
-    const li = createEl('li')
-    const text = createEl('div', task.text)
-    const btnWrepper = createEl('div')
-    const doneBtnTxt = !task.done ? 'Сделано' : 'Не сделано'
-    const doneBtn = createEl('button', doneBtnTxt)
-    const editBtn = createEl('button', 'Редактировать')
-    const deleteBtn = createEl('button', 'Удалить')
-    list.appendChild(li)
-    li.appendChild(text)
-    li.appendChild(btnWrepper)
-    btnWrepper.appendChild(doneBtn)
-    btnWrepper.appendChild(editBtn)
-    btnWrepper.appendChild(deleteBtn)
+    const renderTask = (task) =>{
+        
+        const li = createEl('li')
+        const text = createEl('div', task.text)
+        const btnWrepper = createEl('div')
+        const doneBtnTxt = !task.done ? 'Сделано' : 'Не сделано'
+        const doneBtn = createEl('button', doneBtnTxt)
+        const editBtn = createEl('button', 'Редактировать')
+        const deleteBtn = createEl('button', 'Удалить')
+        list.appendChild(li)
+        li.appendChild(text)
+        li.appendChild(btnWrepper)
+        btnWrepper.appendChild(doneBtn)
+        btnWrepper.appendChild(editBtn)
+        btnWrepper.appendChild(deleteBtn)
 
     deleteBtn.addEventListener('click', ()=>{
         fetchDeleteTask(task.id)
         .then(()=>{
-            list
-            list.remove()
+            li.remove()
             renderTaskList()
         })
     })
@@ -32,8 +31,7 @@ const list = document.querySelector('#list')
     doneBtn.addEventListener('click',() => {
         fetchEditTask(task.id, {done: !task.done})
         .then(()=>{
-            const list = document.querySelector('#list')
-            list.remove()
+            li.remove()
             renderTaskList()
         })
     })
@@ -48,8 +46,7 @@ const list = document.querySelector('#list')
         editInput.addEventListener('blur', ()=>{
             fetchEditTask(task.id, {text: editInput.value})
             .then(()=>{
-                const list = document.querySelector('#list')
-                list.remove()
+                li.remove()
                 renderTaskList()
             })
         })

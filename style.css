@@ -1,45 +1,47 @@
-:root{
+:root {
     --primary: #E5E5E5;
     --white: #ffffff;
     --beige: #FFFBE3;
     --green: #57AD56;
-!important}
+     !important
+}
 
-.box body{
+.box body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
     background: var(--primary);
     color: var(--white);
 }
-h1, h2, h3, h4, p {
+
+h1,
+h2,
+h3,
+h4,
+p {
     margin: 0px;
 }
 
-.page{
-   
-    
-}
+.page {}
 
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
 }
 
-.header h1{
+.header h1 {
     font-style: normal;
     font-weight: 800;
     font-size: 50px;
     line-height: 61px;
 }
 
-.done{
+.done {
     text-decoration: line-through;
 }
 
-.edit-input{
+.edit-input {
     width: 100%;
     display: block;
 }
-

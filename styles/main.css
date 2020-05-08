@@ -1,16 +1,19 @@
+@import url(./form.css);
+
 :root {
-    --primary: #E5E5E5;
-    --white: #ffffff;
-    --beige: #FFFBE3;
-    --green: #57AD56;
-     !important
+    --basic: rgba(165, 167, 238, 0.973);
+    --h-color: #ffffff;
+    --note-primary: #FFFBE3;
+    --note-txt:  #333333;
+    --create-btn: #57AD56;
 }
 
-.box body {
+.box {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: var(--primary);
-    color: var(--white);
+    background: var(--basic) ;
+    background-size: cover;
+    
 }
 
 h1,
@@ -21,13 +24,13 @@ p {
     margin: 0px;
 }
 
-.page {}
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
+    color: var(--white);
 }
 
 .header h1 {
@@ -36,6 +39,12 @@ p {
     font-size: 50px;
     line-height: 61px;
 }
+
+button:focus{
+    outline: none;
+}
+
+
 
 .done {
     text-decoration: line-through;

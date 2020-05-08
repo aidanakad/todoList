@@ -9,6 +9,14 @@ export const fetchGetList = () => {
         })
 }
 
+export const fetchGetStatistic = ()=>{
+    return fetch(`${endpoint}/statistics`)
+        .then (response =>{
+            if(response.ok) return response.json()
+            throw new Error ('Не удалось загрузить статистику')
+        })
+}
+
 export const fetchAddTask = (body) => {
     return fetch(`${endpoint}/add`, {
             method: 'POST',

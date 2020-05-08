@@ -7,6 +7,12 @@ import {
 import {
     createEl
 } from './tools'
+import{
+    // renderStatisticss, renderStatistics
+} from './statisctics'
+import{
+    colorPicker
+} from './colorPicker'
 
 const renderTask = (task, list) => {
 
@@ -65,20 +71,26 @@ const renderTask = (task, list) => {
 
 const renderTaskList = () => {
     const list = createEl('ul', null, {id: 'list'})
-    document.body.appendChild(list)
+    const box = document.querySelector('.box')
+    box.appendChild(list)
     fetchGetList()
         .then(taskList => taskList.forEach((item) => renderTask(item, list)))
 }
+
+
 renderTaskList()
 
 const noteArea = document.querySelector('input[name="note"]')
-const textarea = document.querySelector('textarea[name="description"]')
+const textArea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
+
+// colorPicker()
 
 createBtn.addEventListener('click', () => {
     fetchAddTask({
             text: noteArea.value,
-            textarea: noteArea.value
+            textrea: textArea.value
+            
         })
         .then(() => {
             const list = document.querySelector('#list')

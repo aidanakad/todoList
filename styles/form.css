@@ -1,4 +1,4 @@
-form{
+form {
     display: flex;
     flex-direction: column;
     height: 391px;
@@ -7,7 +7,7 @@ form{
     color: var(--note=txt);
 }
 
-form h2{
+form h2 {
     font-weight: 600;
     font-size: 18px;
     line-height: 22px;
@@ -15,7 +15,7 @@ form h2{
     padding-left: 34px;
 }
 
-form input{
+form input {
     height: 40px;
     width: 511px;
     margin: 19px 34px 13px 34px;
@@ -24,14 +24,14 @@ form input{
     box-sizing: border-box;
 }
 
-form input::placeholder{
+form input::placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     color: #979797;
 }
 
-form textarea{
+form textarea {
     width: 511px;
     height: 107px;
     margin: 0 34px 0 34px;
@@ -40,28 +40,28 @@ form textarea{
     box-sizing: border-box;
 }
 
-form textarea::placeholder{
+form textarea::placeholder {
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     color: #979797;
 }
 
-form div{
+form div {
     display: flex;
     flex-direction: row;
     margin: 27px 0 31px 34px;
 }
 
-form div p{
+form div p {
     padding-right: 34px;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
-    color:  var(--note-txt);
+    color: var(--note-txt);
 }
 
-form div button{
+form div button {
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -70,15 +70,15 @@ form div button{
     margin-right: 11px;
 }
 
-form div button:hover{
+form div button:hover {
     border: 3px solid #333333;
 }
 
-.color-box{
+.color-box {
     margin: 0;
 }
 
-form .create{
+form .create {
     width: 182;
     height: 42px;
     background: var(--create-btn);

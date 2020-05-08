@@ -1,8 +1,14 @@
-import{fetchGetStatistic} from './api'
-import { createEl } from './tools'
-import{renderTask} from './index'
+import {
+    fetchGetStatistic
+} from './api'
+import {
+    createEl
+} from './tools'
+import {
+    renderTask
+} from './index'
 
-export const renderStatistics = (data, list) =>{
+export const renderStatistics = (data, list) => {
     const total = createEl('div', 'Всего заметок')
     const doneTask = createEl('div', data.done)
     const undoneTask = createEl('div', data.undone)

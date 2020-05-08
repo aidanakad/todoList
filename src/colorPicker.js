@@ -1,8 +1,12 @@
-    import{createEl} from './tools'
+    import {
+        createEl
+    } from './tools'
 
-    export const colorPicker = ()=> {
-        const colors =['#FFFBE3',' #FFD2D2',' #D3D2FF',' #D7FDD1', '#F8E1B6']
-        const colorBar = createEl('div', null, {class: 'color-box'})
+    export const colorPicker = () => {
+        const colors = ['#FFFBE3', ' #FFD2D2', ' #D3D2FF', ' #D7FDD1', '#F8E1B6']
+        const colorBar = createEl('div', null, {
+            class: 'color-boxы'
+        })
         const colorBox = document.querySelector('.colors')
         colorBox.appendChild(colorBar)
         const btn1 = createEl('button')
@@ -15,8 +19,8 @@
         colorBar.appendChild(btn3)
         colorBar.appendChild(btn4)
         colorBar.appendChild(btn5)
-        colors.forEach(color =>{
-            colorBar.forEach(btn =>{
+        colors.forEach(color => {
+            colorBar.forEach(btn => {
                 btn.style.backgroundColor = color[index]
             })
         })

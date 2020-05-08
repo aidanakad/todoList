@@ -4,16 +4,16 @@
     --basic: rgba(165, 167, 238, 0.973);
     --text-color: #ffffff;
     --note-primary: #FFFBE3;
-    --note-txt:  #333333;
+    --note-txt: #333333;
     --create-btn: #57AD56;
 }
 
 .box {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background: var(--basic) ;
+    background: var(--basic);
     background-size: cover;
-    
+
 }
 
 h1,
@@ -40,7 +40,7 @@ p {
     line-height: 61px;
 }
 
-button:focus{
+button:focus {
     outline: none;
 }
 

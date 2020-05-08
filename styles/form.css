@@ -73,3 +73,18 @@ form div button{
 form div button:hover{
     border: 3px solid #333333;
 }
+
+.color-box{
+    margin: 0;
+}
+
+form .create{
+    width: 182;
+    height: 42px;
+    background: var(--create-btn);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--text-color);
+    border: none;
+}

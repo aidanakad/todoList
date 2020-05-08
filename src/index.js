@@ -8,7 +8,7 @@ import {
     createEl
 } from './tools'
 import{
-    // renderStatisticss, renderStatistics
+    renderStatisticss, renderStatistics
 } from './statisctics'
 import{
     colorPicker
@@ -84,7 +84,7 @@ const noteArea = document.querySelector('input[name="note"]')
 const textArea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
 
-// colorPicker()
+colorPicker()
 
 createBtn.addEventListener('click', () => {
     fetchAddTask({

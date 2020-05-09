@@ -8,12 +8,8 @@ import {
     createEl
 } from './tools'
 import {
-    renderStatisticss,
     renderStatistics
 } from './statisctics'
-import {
-    colorPicker
-} from './colorPicker'
 
 const renderTask = (task, list) => {
 
@@ -82,12 +78,11 @@ const renderTaskList = () => {
 
 
 renderTaskList()
+renderStatistics()
 
 const noteArea = document.querySelector('input[name="note"]')
 const textArea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
-
-colorPicker()
 
 createBtn.addEventListener('click', () => {
     fetchAddTask({

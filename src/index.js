@@ -7,9 +7,9 @@ import {
 import {
     createEl
 } from './tools'
-import {
-    renderStatistics
-} from './statisctics'
+// import {
+//     renderStatistics
+// } from './statisctics'
 
 const renderTask = (task, list) => {
 
@@ -33,6 +33,10 @@ const renderTask = (task, list) => {
                 list.remove()
                 renderTaskList()
             })
+            .catch((err)=>{
+                const errDiv = createEl('div', err.message, {class: 'error' })
+                list.appendChild(errDiv) 
+            })
     })
 
     doneBtn.addEventListener('click', () => {
@@ -42,6 +46,10 @@ const renderTask = (task, list) => {
             .then(() => {
                 list.remove()
                 renderTaskList()
+            })
+            .catch((err)=>{
+                const errDiv = createEl('div', err.message, {class: 'error' })
+                list.appendChild(errDiv) 
             })
     })
     if (task.done) li.classList.add('done')
@@ -62,6 +70,10 @@ const renderTask = (task, list) => {
                     list.remove()
                     renderTaskList()
                 })
+                .catch((err)=>{
+                    const errDiv = createEl('div', err.message, {class: 'error' })
+                    list.appendChild(errDiv) 
+                })
         })
     })
 }
@@ -74,25 +86,32 @@ const renderTaskList = () => {
     box.appendChild(list)
     fetchGetList()
         .then(taskList => taskList.forEach((item) => renderTask(item, list)))
+        .catch((err) => {
+            const errDiv = createEl('div', err.message, {class: 'error' })
+            list.appendChild(errDiv)
+        } )
 }
 
 
 renderTaskList()
-renderStatistics()
+// renderStatistics()
 
 const noteArea = document.querySelector('input[name="note"]')
-const textArea = document.querySelector('textarea[name="description"]')
+const textarea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
-
 createBtn.addEventListener('click', () => {
     fetchAddTask({
             text: noteArea.value,
-            textrea: textArea.value
+            textrea: textarea.value
 
         })
         .then(() => {
             const list = document.querySelector('#list')
             list.remove()
             renderTaskList()
+        })
+        .catch((err)=>{
+            const errDiv = createEl('div', err.message, {class: 'error' })
+            list.appendChild(errDiv)
         })
 })

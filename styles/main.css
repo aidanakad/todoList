@@ -6,3 +6,11 @@
     width: 100%;
     display: block;
 }
+
+/* .error{
+    display: none;
+} */
+
+.error{
+    color: red;
+}

@@ -28,14 +28,18 @@ const renderTask = (task, list) => {
     btnWrepper.appendChild(deleteBtn)
 
     deleteBtn.addEventListener('click', () => {
-        fetchDeleteTask(task.id)
+        fetchDeleteTask(task.id)    
             .then(() => {
                 list.remove()
                 renderTaskList()
             })
             .catch((err)=>{
-                const errDiv = createEl('div', err.message, {class: 'error' })
+                const isErr = document.querySelector('.error')
+                if(!isErr){
+                const errDiv = createEl('div', null, {class: 'error' })
                 list.appendChild(errDiv) 
+                errDiv.textContent = err.message
+            }
             })
     })
 
@@ -48,8 +52,12 @@ const renderTask = (task, list) => {
                 renderTaskList()
             })
             .catch((err)=>{
-                const errDiv = createEl('div', err.message, {class: 'error' })
+                const isErr = document.querySelector('.error')
+                if(!isErr){
+                const errDiv = createEl('div', null, {class: 'error' })
                 list.appendChild(errDiv) 
+                errDiv.textContent = err.message
+            }
             })
     })
     if (task.done) li.classList.add('done')
@@ -71,8 +79,12 @@ const renderTask = (task, list) => {
                     renderTaskList()
                 })
                 .catch((err)=>{
-                    const errDiv = createEl('div', err.message, {class: 'error' })
-                    list.appendChild(errDiv) 
+                    const isErr = document.querySelector('.error')
+                if(!isErr){
+                const errDiv = createEl('div', null, {class: 'error' })
+                list.appendChild(errDiv) 
+                errDiv.textContent = err.message
+            }
                 })
         })
     })
@@ -99,7 +111,9 @@ renderTaskList()
 const noteArea = document.querySelector('input[name="note"]')
 const textarea = document.querySelector('textarea[name="description"]')
 const createBtn = document.querySelector('#create')
-createBtn.addEventListener('click', () => {
+
+createBtn.addEventListener('click', (event) => {
+    event.preventDefault()
     fetchAddTask({
             text: noteArea.value,
             textrea: textarea.value
@@ -111,7 +125,11 @@ createBtn.addEventListener('click', () => {
             renderTaskList()
         })
         .catch((err)=>{
-            const errDiv = createEl('div', err.message, {class: 'error' })
-            list.appendChild(errDiv)
+            const isErr = document.querySelector('.error')
+            if(!isErr){
+                const errDiv = createEl('div', null, {class: 'error' })
+                list.appendChild(errDiv) 
+                errDiv.textContent = err.message
+            }
         })
 })

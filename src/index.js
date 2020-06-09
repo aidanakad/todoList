@@ -14,7 +14,8 @@ import {
 const renderTask = (task, list) => {
 
     const li = createEl('li')
-    const text = createEl('div', task.text)
+    const text = createEl('div', task.text, {class: 'title'})
+    const descr = createEl ('div', task.textarea)
     const btnWrepper = createEl('div')
     const doneBtnTxt = !task.done ? 'Сделано' : 'Не сделано'
     const doneBtn = createEl('button', doneBtnTxt)
@@ -22,10 +23,12 @@ const renderTask = (task, list) => {
     const deleteBtn = createEl('button', 'Удалить')
     list.appendChild(li)
     li.appendChild(text)
+    li.appendChild(descr)
     li.appendChild(btnWrepper)
     btnWrepper.appendChild(doneBtn)
     btnWrepper.appendChild(editBtn)
     btnWrepper.appendChild(deleteBtn)
+
 
     deleteBtn.addEventListener('click', () => {
         fetchDeleteTask(task.id)    
@@ -116,8 +119,7 @@ createBtn.addEventListener('click', (event) => {
     event.preventDefault()
     fetchAddTask({
             text: noteArea.value,
-            textrea: textarea.value
-
+            textarea:  textarea.value
         })
         .then(() => {
             const list = document.querySelector('#list')

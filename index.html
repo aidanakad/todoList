@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <ul id="list"></ul>
-    <script src="./script.js"></script>
+    <div class="container box">
+        <header class="header">
+            <h1>TODO LIST</h1>
+            <h3>BY AIDANA KADYROVA</h3>
+        </header>
+        <form>
+            <h2>Создать заметку</h2>
+            <input type="text" name="note" placeholder="заголовок">
+            <textarea name="description" placeholder="описание"></textarea>
+            <button type="submit" id="create" class="create">Создать</button>
+            
+        </form>
+
+        <h2>СПИСОК ЗАДАЧ</h2>
+    </div>
+    
+
+        
+
+    <script src="./dist/main.js"></script>
 </body>
 </html>
